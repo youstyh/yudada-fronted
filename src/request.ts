@@ -1,11 +1,18 @@
 import axios from "axios";
 import { Message } from "@arco-design/web-vue";
 
+
+
+// 是否是开发环境
+export const isDev = process.env.NODE_ENV === "development";
+
+// 创建 Axios 实例1780859427469991938_0.30989348894630786
 const myAxios = axios.create({
-  baseURL: "http://localhost:8101",
-  timeout: 60000,
-  withCredentials: true,
+    baseURL: isDev ? "http://localhost:8101" : "https://yudada-backend1-113344-5-1324990313.sh.run.tcloudbase.com/",
+    timeout: 60000,
+    withCredentials: true,
 });
+
 
 // 全局请求拦截器
 myAxios.interceptors.request.use(
